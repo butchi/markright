@@ -11,3 +11,4 @@ marked.setOptions({
 });
 
 console.log(marked('I am using __markdown__.'));
+global.marked = marked;
