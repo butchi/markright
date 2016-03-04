@@ -1,0 +1,25 @@
+{
+  "name": "markright",
+  "version": "0.0.1",
+  "description": "Markdown with Space Tree",
+  "main": "markright.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/butchi/markright.git"
+  },
+  "keywords": [
+    "markdown"
+  ],
+  "author": "IWABUCHI Yuuki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/butchi/markright/issues"
+  },
+  "homepage": "https://github.com/butchi/markright#readme",
+  "dependencies": {
+    "marked": "^0.3.5"
+  }
+}
