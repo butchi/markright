@@ -47,7 +47,8 @@ gulp.task 'deco', () ->
     .pipe (gulp.dest '.')
 
 gulp.task 'build', () ->
-  runSequence 'js', 'minify', 'deco'
+  runSequence ['js']
+#  runSequence 'js', 'minify', 'deco'
 
 gulp.task 'watch', () ->
   gulp.watch('src/markright.js', ['build'])
