@@ -1,0 +1,25 @@
+{
+  "name": "markright",
+  "description": "Markdown with Space Tree",
+  "main": "markright.js",
+  "authors": [
+    "IWABUCHI Yuuki"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "markdown"
+  ],
+  "homepage": "https://github.com/butchi/markright",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.1",
+    "lodash": "~4.6.1"
+  }
+}
