@@ -5,6 +5,10 @@
   <title>Markright in the browser</title>
 
   <style>
+div {
+  margin-top: 10px;
+}
+
 span {
   display: inline-block;
   border: 1px solid #f00;
@@ -27,21 +31,18 @@ var $wrapper = $('.wrapper');
 
 var markright = new Markright({delimiter: ' '});
 
-var html1 = markright.html(`I   have  a pen`);
-var html2 = markright.html(`今日 は  晴れ まし た`);
-var html3 = markright.html(`頭が 赤い   魚を 食べた  猫`);
-var html4 = markright.html(`頭が 赤い  魚を   食べた    猫`);
-var html5 = markright.html(`頭が   赤い 魚を  食べた    猫`);
-var html6 = markright.html(`頭が    赤い 魚を  食べた   猫`);
-var html7 = markright.html(`頭が    赤い   魚を 食べた  猫`);
+function mark(str) {
+  var $elm = $(`<div><span>${markright.html(str)}</span></div>`);
+  $wrapper.append($elm);
+}
 
-$wrapper.append($(html1));
-$wrapper.append($(html2));
-$wrapper.append($(html3));
-$wrapper.append($(html4));
-$wrapper.append($(html5));
-$wrapper.append($(html6));
-$wrapper.append($(html7));
+mark(`I   have  a pen`);
+mark(`今日 は  晴れ まし た`);
+mark(`頭が 赤い   魚を 食べた  猫`);
+mark(`頭が 赤い  魚を   食べた    猫`);
+mark(`頭が   赤い 魚を  食べた    猫`);
+mark(`頭が    赤い 魚を  食べた   猫`);
+mark(`頭が    赤い   魚を 食べた  猫`);
   </script>
   
 </body>
