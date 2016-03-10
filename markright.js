@@ -48,7 +48,7 @@ var Markright = function () {
         ret += _this.wrap(tmp);
       });
 
-      return this.wrap(ret);
+      return ret;
     }
   }, {
     key: 'wrap',

@@ -27,7 +27,7 @@ class Markright {
       ret += this.wrap(tmp);
     });
 
-    return this.wrap(ret);
+    return ret;
   }
 
   wrap(str) {
