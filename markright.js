@@ -17,15 +17,18 @@ var Markright = function () {
     _classCallCheck(this, Markright);
 
     this.delimiter = opts.delimiter || ' ';
+    this.opener = opts.opener || '(';
+    this.closer = opts.closer || ')';
   }
 
   _createClass(Markright, [{
     key: 'html',
     value: function html(str) {
-      var ret;
-      var arr;
+      var ret = undefined;
+      var arr = undefined;
 
-      arr = this.branch(str);
+      var strFlat = this.flatten(str);
+      arr = this.branch(strFlat);
       ret = this.render(arr);
 
       return ret;
@@ -58,7 +61,16 @@ var Markright = function () {
   }, {
     key: 'splitStr',
     value: function splitStr(str) {
-      var res;
+      var res = undefined;
+      var longest = this.getLongest(str);
+
+      res = str.split(this.constantSpace(longest));
+
+      return res;
+    }
+  }, {
+    key: 'getLongest',
+    value: function getLongest(str) {
       var longest = 0;
 
       var len = str.length;
@@ -75,9 +87,7 @@ var Markright = function () {
         longest = Math.max(longest, longTmp);
       }
 
-      res = str.split(this.constantSpace(longest));
-
-      return res;
+      return longest;
     }
   }, {
     key: 'constantSpace',
@@ -97,14 +107,36 @@ var Markright = function () {
       return JSON.stringify(arr1) === JSON.stringify(arr2);
     }
   }, {
-    key: 'branch',
-    value: function branch(str) {
+    key: 'flatten',
+    value: function flatten(str) {
       var _this2 = this;
 
+      var longest = this.getLongest(str);
+
+      var tmp = str.replace(/[\)\(]+/g, function (bracketArr) {
+        var rep = bracketArr.length || 0;
+
+        return _this2.constantSpace(longest + rep);
+      });
+
+      tmp = tmp.replace(/[\(\)]*/g, '');
+
+      var ret = tmp.trim();
+
+      console.log(ret);
+
+      return ret;
+    }
+  }, {
+    key: 'branch',
+    value: function branch(str) {
+      var _this3 = this;
+
       var ret = [];
+
       if (str.indexOf(this.delimiter) !== -1) {
         this.splitStr(str).forEach(function (elm) {
-          ret.push(_this2.branch(elm));
+          ret.push(_this3.branch(elm));
         });
       } else {
         ret = str;

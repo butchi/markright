@@ -1,13 +1,16 @@
 class Markright {
   constructor(opts = {}) {
     this.delimiter = opts.delimiter || ' ';
+    this.opener = opts.opener || '(';
+    this.closer = opts.closer || ')';
   }
 
   html(str) {
-    var ret;
-    var arr;
+    let ret;
+    let arr;
 
-    arr = this.branch(str);
+    let strFlat = this.flatten(str);
+    arr = this.branch(strFlat);
     ret = this.render(arr);
 
     return ret;
@@ -35,8 +38,16 @@ class Markright {
   }
 
   splitStr(str) {
-    var res;
-    var longest = 0;
+    let res;
+    let longest = this.getLongest(str);
+
+    res = str.split(this.constantSpace(longest));
+
+    return res;
+  }
+
+  getLongest(str) {
+    let longest = 0;
 
     let len = str.length;
     let i;
@@ -52,9 +63,7 @@ class Markright {
       longest = Math.max(longest, longTmp);
     }
 
-    res = str.split(this.constantSpace(longest));
-
-    return res;
+    return longest;
   }
 
   constantSpace(len) {
@@ -72,8 +81,27 @@ class Markright {
     return JSON.stringify(arr1) === JSON.stringify(arr2);
   }
 
+  flatten(str) {
+    let longest = this.getLongest(str);
+
+    let tmp = str.replace(/[\)\(]+/g, (bracketArr) => {
+      let rep = bracketArr.length || 0;
+
+      return this.constantSpace(longest + rep);
+    });
+
+    tmp = tmp.replace(/[\(\)]*/g, '');
+
+    let ret = tmp.trim();
+
+    console.log(ret);
+
+    return ret;
+  }
+
   branch(str) {
-    var ret = [];
+    let ret = [];
+
     if(str.indexOf(this.delimiter) !== -1) {
       this.splitStr(str).forEach((elm) => {
         ret.push(this.branch(elm));
