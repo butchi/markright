@@ -4,21 +4,7 @@
   <meta charset="UTF-8">
   <title>Markright in the browser</title>
 
-  <style>
-div {
-  margin-top: 10px;
-}
-
-span {
-  display: inline-block;
-  border: 1px solid #f00;
-  padding: 2px 8px;
-}
-
-span + span {
-  margin-left: 10px;
-}
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="wrapper">
@@ -26,35 +12,6 @@ span + span {
 
   <script src="js/lib/jquery.min.js"></script>
   <script src="js/lib/markright.deco.js"></script>
-  <script>
-var $wrapper = $('.wrapper');
-
-var markright = new Markright({
-  delimiter: ' ',
-  opener: '(',
-  closer: ')',
-});
-
-function mark(str) {
-  var $elm = $(`<div><span>${markright.html(str)}</span></div>`);
-  $wrapper.append($elm);
-}
-
-mark(`I   have  a pen`);
-mark(`(((I))((have)((a)(pen))))`);
-mark(`(I)((have)(a pen))`);
-
-mark(`今日 は  晴れ まし た`);
-mark(`(今日 は)(晴れ まし た)`);
-
-mark(`頭が 赤い   魚を 食べた  猫`);
-mark(`(頭が 赤い)((魚を 食べた)(猫))`);
-mark(`頭が 赤い  魚を   食べた    猫`);
-mark(`頭が   赤い 魚を  食べた    猫`);
-mark(`頭が    赤い 魚を  食べた   猫`);
-mark(`頭が    赤い   魚を 食べた  猫`);
-mark(`(頭が)((赤い)(魚を 食べた  猫))`);
-  </script>
-  
+  <script src="js/script.js"></script>
 </body>
 </html>
