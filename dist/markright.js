@@ -12,7 +12,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Markright = function () {
   function Markright() {
-    var opts = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
     _classCallCheck(this, Markright);
 
@@ -24,8 +24,8 @@ var Markright = function () {
   _createClass(Markright, [{
     key: 'html',
     value: function html(str) {
-      var ret = undefined;
-      var arr = undefined;
+      var ret = void 0;
+      var arr = void 0;
 
       var strFlat = this.flatten(str);
       arr = this.branch(strFlat);
@@ -61,7 +61,7 @@ var Markright = function () {
   }, {
     key: 'splitStr',
     value: function splitStr(str) {
-      var res = undefined;
+      var res = void 0;
       var longest = this.getLongest(str);
 
       res = str.split(this.constantSpace(longest));
@@ -74,7 +74,7 @@ var Markright = function () {
       var longest = 0;
 
       var len = str.length;
-      var i = undefined;
+      var i = void 0;
       var longTmp = 0;
 
       for (i = 0; i < len; i++) {
@@ -93,7 +93,7 @@ var Markright = function () {
     key: 'constantSpace',
     value: function constantSpace(len) {
       var ret = '';
-      var i = undefined;
+      var i = void 0;
 
       for (i = 0; i < len; i++) {
         ret += this.delimiter;
