@@ -38,7 +38,7 @@ gulp.task('minify', () => {
 gulp.task('deco', () => {
   return gulp.src(`${DEST}/markright.js`)
     .pipe(decodecode({
-      decoArr: ['b', 'u', 't', 'c', 'h', 'i'],
+      decoArr: ['m', 'a', 'r', 'k', 'r', 'i', 'g', 'h', 't'],
     }))
     .pipe(rename('markright.deco.js'))
     .pipe(gulp.dest(`${DEST}`))
