@@ -1,15 +1,15 @@
 import Markright from './lib/markright.js';
 
-var $wrapper = $('.wrapper');
+const $wrapper = $('.wrapper');
 
-var markright = new Markright({
+const markright = new Markright({
   delimiter: ' ',
   opener: '(',
   closer: ')',
 });
 
-function mark(str) {
-  var $elm = $(`<div><span>${markright.html(str)}</span></div>`);
+const mark = str => {
+  const $elm = $(`<div><span>${markright.html(str)}</span></div>`);
   $wrapper.append($elm);
 }
 
