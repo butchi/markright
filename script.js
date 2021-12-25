@@ -1,6 +1,4 @@
-import $ from 'jquery';
-
-import Markright from './lib/markright';
+import Markright from './lib/markright.js';
 
 var $wrapper = $('.wrapper');
 
