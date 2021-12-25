@@ -1,6 +1,6 @@
 import Markright from './lib/markright.js';
 
-const $wrapper = $('.wrapper');
+const wrapperElm = document.querySelector('.wrapper');
 
 const markright = new Markright({
   delimiter: ' ',
@@ -9,8 +9,13 @@ const markright = new Markright({
 });
 
 const mark = str => {
-  const $elm = $(`<div><span>${markright.html(str)}</span></div>`);
-  $wrapper.append($elm);
+  const elm = document.createElement('div');
+  const spanElm = document.createElement('span');
+
+  elm.append(spanElm);
+  elm.innerHTML = markright.html(str);
+
+  wrapperElm.append(elm);
 }
 
 mark(`I   have  a pen`);
