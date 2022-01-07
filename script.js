@@ -1,44 +1,46 @@
-"use strict"
-
 import Markright from "./lib/markright.js"
 
-const wrapperElm = document.querySelector(".wrapper")
+(() => {
+  "use strict"
 
-const markright = new Markright({
-  delimiter: " ",
-  opener: "(",
-  closer: ")",
-})
+  const wrapperElm = document.querySelector(".wrapper")
 
-const mark = str => {
-  const elm = document.createElement("div")
-  const spanElm = document.createElement("span")
+  const markright = new Markright({
+    delimiter: " ",
+    opener: "(",
+    closer: ")",
+  })
 
-  elm.append(spanElm)
-  elm.innerHTML = markright.html(str)
+  const mark = str => {
+    const elm = document.createElement("div")
+    const spanElm = document.createElement("span")
 
-  wrapperElm.append(elm)
-}
+    elm.append(spanElm)
+    elm.innerHTML = markright.html(str)
 
-mark(`I   have  a pen`)
-mark(`(((I))((have)((a)(pen))))`)
-mark(`(I)((have)(a pen))`)
+    wrapperElm.append(elm)
+  }
 
-mark(`今日 は  晴れ まし た`)
-mark(`(今日 は)(晴れ まし た)`)
+  mark(`I   have  a pen`)
+  mark(`(((I))((have)((a)(pen))))`)
+  mark(`(I)((have)(a pen))`)
 
-mark(`頭が 赤い   魚を 食べた  猫`)
-mark(`(頭が 赤い)((魚を 食べた)(猫))`)
-mark(`頭が 赤い  魚を   食べた    猫`)
-mark(`頭が   赤い 魚を  食べた    猫`)
-mark(`頭が    赤い 魚を  食べた   猫`)
-mark(`頭が    赤い   魚を 食べた  猫`)
-mark(`(頭が)((赤い)(魚を 食べた  猫))`)
+  mark(`今日 は  晴れ まし た`)
+  mark(`(今日 は)(晴れ まし た)`)
 
-mark(`func(a b c)`)
-mark(`
-func
-  a
-  b
-  c
-`)
+  mark(`頭が 赤い   魚を 食べた  猫`)
+  mark(`(頭が 赤い)((魚を 食べた)(猫))`)
+  mark(`頭が 赤い  魚を   食べた    猫`)
+  mark(`頭が   赤い 魚を  食べた    猫`)
+  mark(`頭が    赤い 魚を  食べた   猫`)
+  mark(`頭が    赤い   魚を 食べた  猫`)
+  mark(`(頭が)((赤い)(魚を 食べた  猫))`)
+
+  mark(`func(a b c)`)
+  mark(`
+  func
+    a
+    b
+    c
+  `)
+})()
