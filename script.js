@@ -38,9 +38,9 @@ import Markright from "./lib/markright.js"
 
   mark(`func(a b c)`)
   mark(`
-  func
-    a
-    b
-    c
-  `)
+aaa
+    1
+    2
+    3
+`.slice(1, -1))
 })()
